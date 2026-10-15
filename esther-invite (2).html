@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Such a Time as This · An Evening in Esther</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EEE3; --panel:#FBF8F1; --ink:#1B2A55; --ink-soft:#4A5577;
+  --gold:#A87A1E; --gold-bright:#C99A2E; --pom:#9B2335; --line:#D8CDB4;
+  --on-gold:#FFFDF6;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1838; --panel:#17224A; --ink:#EFE6D0; --ink-soft:#B9B3A4;
+    --gold:#D9AE4A; --gold-bright:#E8C267; --pom:#E06A7A; --line:#2C3A6B;
+    --on-gold:#1A1405; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1838; --panel:#17224A; --ink:#EFE6D0; --ink-soft:#B9B3A4;
+  --gold:#D9AE4A; --gold-bright:#E8C267; --pom:#E06A7A; --line:#2C3A6B;
+  --on-gold:#1A1405; color-scheme: dark;
+}
+/* ---------- Each guest's own colours ---------- */
+body{--glow1:transparent;--glow2:transparent;--glow3:transparent;transition:background-color .8s ease}
+body[data-guest="Temiloluwa"]{--paper:#FCE3E2;--panel:#FFF6F1;--ink:#3B0F1E;--ink-soft:#7A4452;--gold:#B0234A;--gold-bright:#D13A63;--pom:#E0731F;--line:#F2BFC4;--on-gold:#FFF8F4;--glow1:#FFB3C1;--glow2:#FFD39A;--glow3:#F79BB4}
+body[data-guest="Tracy"]{--paper:#D9F3E8;--panel:#F4FCF7;--ink:#0B3229;--ink-soft:#3F6A5D;--gold:#0E7A5F;--gold-bright:#14957A;--pom:#C9871A;--line:#A9DCC8;--on-gold:#F4FFFA;--glow1:#8FE3C6;--glow2:#F6E39A;--glow3:#7FD1E0}
+body[data-guest="Debby"]{--paper:#EEE3FB;--panel:#FBF7FF;--ink:#2A1145;--ink-soft:#64508A;--gold:#7A35B8;--gold-bright:#9450D2;--pom:#D2448A;--line:#D9C6F2;--on-gold:#FDFAFF;--glow1:#CBA8F5;--glow2:#FFB8DC;--glow3:#A9C3FF}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) body[data-guest="Temiloluwa"]{--paper:#2A0A16;--panel:#3D1222;--ink:#FCE7E4;--ink-soft:#E0A9B2;--gold:#FF7C9C;--gold-bright:#FF9BB3;--pom:#FFB168;--line:#5A2235;--on-gold:#2A0A16;--glow1:#7A1838;--glow2:#6B3A10;--glow3:#5A1550}
+  :root:not([data-theme="light"]) body[data-guest="Tracy"]{--paper:#05221C;--panel:#0B3229;--ink:#E2F7EE;--ink-soft:#9CCDBC;--gold:#4FD8AE;--gold-bright:#7CE6C5;--pom:#F2C14E;--line:#174A3D;--on-gold:#05221C;--glow1:#0F5C47;--glow2:#4A4410;--glow3:#0F4A5C}
+  :root:not([data-theme="light"]) body[data-guest="Debby"]{--paper:#170A2B;--panel:#24113F;--ink:#F1E8FD;--ink-soft:#BFA9E0;--gold:#C29BFF;--gold-bright:#D6B9FF;--pom:#FF8AC4;--line:#3B2263;--on-gold:#170A2B;--glow1:#4A1E80;--glow2:#6B1A4A;--glow3:#1E2F80}
+}
+:root[data-theme="dark"] body[data-guest="Temiloluwa"]{--paper:#2A0A16;--panel:#3D1222;--ink:#FCE7E4;--ink-soft:#E0A9B2;--gold:#FF7C9C;--gold-bright:#FF9BB3;--pom:#FFB168;--line:#5A2235;--on-gold:#2A0A16;--glow1:#7A1838;--glow2:#6B3A10;--glow3:#5A1550}
+:root[data-theme="dark"] body[data-guest="Tracy"]{--paper:#05221C;--panel:#0B3229;--ink:#E2F7EE;--ink-soft:#9CCDBC;--gold:#4FD8AE;--gold-bright:#7CE6C5;--pom:#F2C14E;--line:#174A3D;--on-gold:#05221C;--glow1:#0F5C47;--glow2:#4A4410;--glow3:#0F4A5C}
+:root[data-theme="dark"] body[data-guest="Debby"]{--paper:#170A2B;--panel:#24113F;--ink:#F1E8FD;--ink-soft:#BFA9E0;--gold:#C29BFF;--gold-bright:#D6B9FF;--pom:#FF8AC4;--line:#3B2263;--on-gold:#170A2B;--glow1:#4A1E80;--glow2:#6B1A4A;--glow3:#1E2F80}
+body[data-guest="Covenant"]{--paper:#DDE9FC;--panel:#F5F9FF;--ink:#0E2152;--ink-soft:#46598A;--gold:#1F4FB5;--gold-bright:#2F66D6;--pom:#D9971E;--line:#B7CCF0;--on-gold:#F7FAFF;--glow1:#9EC0FF;--glow2:#FFD98A;--glow3:#9FE6F2}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) body[data-guest="Covenant"]{--paper:#07143A;--panel:#0F1F52;--ink:#E6EEFF;--ink-soft:#A9BBE6;--gold:#8FB4FF;--gold-bright:#B3CCFF;--pom:#F5C25A;--line:#1F3570;--on-gold:#07143A;--glow1:#1A3C8F;--glow2:#5C4410;--glow3:#0F4A66}
+}
+:root[data-theme="dark"] body[data-guest="Covenant"]{--paper:#07143A;--panel:#0F1F52;--ink:#E6EEFF;--ink-soft:#A9BBE6;--gold:#8FB4FF;--gold-bright:#B3CCFF;--pom:#F5C25A;--line:#1F3570;--on-gold:#07143A;--glow1:#1A3C8F;--glow2:#5C4410;--glow3:#0F4A66}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(38rem 30rem at 0% 0%, var(--glow1), transparent 70%),
+  radial-gradient(34rem 28rem at 100% 35%, var(--glow2), transparent 70%),
+  radial-gradient(40rem 30rem at 20% 100%, var(--glow3), transparent 70%);
+  opacity:.85;transition:opacity .8s ease}
+body{position:relative;isolation:isolate}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Spectral,Georgia,"Times New Roman",serif;font-size:1.0625rem;line-height:1.7}
+h1,h2,h3{font-family:Marcellus,"Trajan Pro",Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:4px}
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- The gate: choose your name ---------- */
+#gate{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 1.25rem}
+.lattice{width:min(78vw,300px);aspect-ratio:1;margin-bottom:2rem}
+.lattice svg{width:100%;height:100%}
+#gate h1{font-size:clamp(2.1rem,7vw,3.2rem);letter-spacing:.01em}
+#gate .ref{font-style:italic;color:var(--ink-soft);margin:.6rem 0 2rem}
+.names{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.names button{background:transparent;color:var(--ink);border:1.5px solid var(--gold);padding:.7rem 1.4rem;border-radius:999px;font-family:Marcellus,Georgia,serif;font-size:1.1rem;transition:background .2s,color .2s}
+.names button:hover{background:var(--gold);color:var(--on-gold)}
+.gate-prompt{font-size:.95rem;color:var(--ink-soft);margin-bottom:.9rem}
+
+/* sceptre moment */
+#sceptre{display:none;flex-direction:column;align-items:center;margin-top:1rem}
+#sceptre.show{display:flex}
+#sceptre p{max-width:26rem;margin:.25rem 0 1.25rem}
+.touch{background:var(--gold);color:var(--on-gold);border:0;padding:.85rem 1.8rem;border-radius:999px;font-family:Marcellus,Georgia,serif;font-size:1.1rem}
+.touch:hover{background:var(--gold-bright)}
+
+/* opening animation */
+.lattice .petal{transform-origin:150px 150px;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.opened .lattice .petal{transform:rotate(22.5deg) scale(1.12)}
+.lattice .core{transition:r .9s ease}
+.opened .lattice .core{r:46}
+
+/* ---------- Invitation body ---------- */
+#invite{display:none}
+#invite.show{display:block}
+.hero{text-align:center;padding:4rem 0 2.5rem;border-bottom:1px solid var(--line)}
+.hero .greet{font-style:italic;color:var(--gold);font-size:1.15rem;margin:0 0 .75rem}
+.hero h2{font-size:clamp(2rem,6.5vw,3rem)}
+.hero .lede{max-width:30rem;margin:1.1rem auto 0;color:var(--ink-soft)}
+
+section.part{padding:2.75rem 0;border-bottom:1px solid var(--line)}
+section.part h3{font-size:1.65rem;margin-bottom:.4rem}
+section.part .sub{color:var(--ink-soft);margin:0 0 1.4rem}
+
+.details{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.4rem;margin:0}
+.details dt{font-family:Marcellus,Georgia,serif;color:var(--gold)}
+.details dd{margin:0}
+.countdown{display:flex;gap:1.5rem;margin-top:1.6rem;flex-wrap:wrap}
+.countdown div{text-align:center;min-width:3.5rem}
+.countdown b{display:block;font-family:Marcellus,Georgia,serif;font-weight:400;font-size:2.2rem;line-height:1}
+.countdown span{font-size:.85rem;color:var(--ink-soft)}
+
+/* the evening's order */
+.order{list-style:none;padding:0;margin:0;counter-reset:o}
+.order li{position:relative;padding:0 0 1.1rem 2.6rem;counter-increment:o}
+.order li::before{content:counter(o);position:absolute;left:0;top:.1rem;width:1.8rem;height:1.8rem;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-family:Marcellus,Georgia,serif;font-size:.95rem;color:var(--gold)}
+.order strong{font-weight:600}
+
+/* scroll reveal */
+.scroll{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1.6rem 1.5rem;position:relative}
+.scroll .chap{font-family:Marcellus,Georgia,serif;font-size:2rem;color:var(--pom);line-height:1.1}
+.scroll .chap small{display:block;font-family:Spectral,Georgia,serif;font-size:1rem;color:var(--ink-soft);font-style:italic;margin-top:.3rem}
+.scroll p{margin:.9rem 0 0}
+.others{margin-top:1.4rem;font-size:.95rem;color:var(--ink-soft)}
+.others li{margin:.15rem 0}
+
+/* seal button */
+.seal{display:inline-flex;align-items:center;gap:.8rem;background:transparent;border:0;color:var(--ink);padding:0}
+.seal .wax{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--pom);display:grid;place-items:center;color:#FBEFD9;font-family:Marcellus,Georgia,serif;font-size:1.4rem;box-shadow:inset 0 0 0 4px rgba(255,255,255,.12);transition:transform .25s}
+.seal:hover .wax{transform:rotate(-12deg) scale(1.05)}
+.seal span:last-child{font-family:Marcellus,Georgia,serif;font-size:1.1rem;border-bottom:1px solid var(--gold)}
+.hidden{display:none!important}
+.reveal-in{animation:unroll .7s ease both}
+@keyframes unroll{from{opacity:0;transform:translateY(-6px) scaleY(.92);transform-origin:top}to{opacity:1;transform:none}}
+
+/* quiz */
+.q{font-family:Marcellus,Georgia,serif;font-size:1.3rem;margin:0 0 1rem;line-height:1.35}
+.opts{display:grid;gap:.6rem}
+.opts button{text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:.75rem 1rem;border-radius:6px}
+.opts button:hover:not(:disabled){border-color:var(--gold)}
+.opts button.right{border-color:var(--gold);background:var(--gold);color:var(--on-gold)}
+.opts button.wrong{border-color:var(--pom);color:var(--pom)}
+.opts button:disabled{cursor:default}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;gap:1rem;flex-wrap:wrap}
+.qnote{font-style:italic;color:var(--ink-soft);margin:.9rem 0 0;min-height:1.7em}
+.ghost{background:transparent;border:1.5px solid var(--gold);color:var(--ink);padding:.55rem 1.2rem;border-radius:999px}
+.ghost:hover{background:var(--gold);color:var(--on-gold)}
+.progress{font-size:.9rem;color:var(--ink-soft)}
+
+/* rsvp */
+.rsvp-choice{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
+.rsvp-choice button{flex:1 1 12rem;padding:.9rem 1rem;border-radius:6px;border:1.5px solid var(--gold);background:transparent;color:var(--ink);font-family:Marcellus,Georgia,serif;font-size:1.05rem}
+.rsvp-choice button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold)}
+textarea{width:100%;min-height:5.5rem;padding:.8rem;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);font:inherit;font-size:1rem;resize:vertical}
+label.lbl{display:block;font-size:.95rem;color:var(--ink-soft);margin-bottom:.35rem}
+.send{margin-top:1rem;display:inline-block;background:var(--gold);color:var(--on-gold);text-decoration:none;padding:.85rem 1.6rem;border-radius:999px;font-family:Marcellus,Georgia,serif;font-size:1.05rem}
+.send[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+footer{text-align:center;padding:3rem 0 4rem;color:var(--ink-soft);font-style:italic}
+footer .switch{font-style:normal;margin-top:1rem;background:none;border:0;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- ============ GATE ============ -->
+<div id="gate">
+  <div class="lattice" aria-hidden="true">
+    <svg viewBox="0 0 300 300">
+      <g class="petal" fill="none" stroke="var(--gold)" stroke-width="1.6">
+        <g id="p">
+          <path d="M150 20 C190 80 190 110 150 150 C110 110 110 80 150 20Z"/>
+          <path d="M150 50 C172 90 172 110 150 135 C128 110 128 90 150 50Z" stroke="var(--pom)"/>
+        </g>
+        <use href="#p" transform="rotate(45 150 150)"/><use href="#p" transform="rotate(90 150 150)"/>
+        <use href="#p" transform="rotate(135 150 150)"/><use href="#p" transform="rotate(180 150 150)"/>
+        <use href="#p" transform="rotate(225 150 150)"/><use href="#p" transform="rotate(270 150 150)"/>
+        <use href="#p" transform="rotate(315 150 150)"/>
+      </g>
+      <circle cx="150" cy="150" r="138" fill="none" stroke="var(--line)" stroke-width="1"/>
+      <circle class="core" cx="150" cy="150" r="22" fill="var(--pom)"/>
+      <text x="150" y="157" text-anchor="middle" font-family="Marcellus,Georgia,serif" font-size="20" fill="#FBEFD9">E</text>
+    </svg>
+  </div>
+  <h1>For such a time as this</h1>
+  <p class="ref">An evening in the book of Esther</p>
+
+  <div id="pick">
+    <p class="gate-prompt">Who's opening this invitation?</p>
+    <div class="names">
+      <button data-name="Temiloluwa">Temiloluwa</button>
+      <button data-name="Tracy">Tracy</button>
+      <button data-name="Debby">Debby</button>
+      <button data-name="Covenant">Covenant</button>
+    </div>
+  </div>
+
+  <div id="sceptre">
+    <p>In Esther's day, no one could come before the king unless he held out his golden sceptre. <em id="sceptreName"></em>, it's being held out to you.</p>
+    <button class="touch" id="touchBtn">Touch the sceptre</button>
+  </div>
+</div>
+
+<!-- ============ INVITATION ============ -->
+<main id="invite" aria-live="polite">
+  <div class="wrap">
+    <header class="hero">
+      <p class="greet" id="greet"></p>
+      <h2>You're invited to the queen's table</h2>
+      <p class="lede">Four of us, one book, a long table and good food. We're reading Esther together, start to finish, and talking about what it means for us right now.</p>
+    </header>
+
+    <section class="part" aria-labelledby="h-when">
+      <h3 id="h-when">The details</h3>
+      <p class="sub">Save the date. A little planning goes a long way.</p>
+      <dl class="details">
+        <dt>When</dt><dd id="dWhen"></dd>
+        <dt>Where</dt><dd id="dWhere"></dd>
+        <dt>Dress</dt><dd>Dress like royalty. Your finest, your favourite, or anything with a little gold.</dd>
+        <dt>Bring</dt><dd>Your Bible, an open heart, and a small gift (see below).</dd>
+        <dt>Give</dt><dd>₦10,000 each towards the food and the evening.</dd>
+        <dt>Host</dt><dd>Covenant</dd>
+      </dl>
+      <div style="margin-top:1.6rem">
+        <button class="seal" id="accBtn"><span class="wax">₦</span><span>See account details</span></button>
+        <div id="accBox" class="hidden">
+          <div class="scroll reveal-in">
+            <div class="chap" id="accNum">0085251446<small>Stanbic IBTC Bank</small></div>
+            <p>₦10,000 per person. Please add your name to the transfer narration.</p>
+            <button class="ghost" id="copyBtn" style="margin-top:1rem">Copy account number</button>
+          </div>
+        </div>
+      </div>
+      <div class="countdown hidden" id="countdown" aria-label="Time until the evening">
+        <div><b id="cd-d">0</b><span>days</span></div>
+        <div><b id="cd-h">0</b><span>hours</span></div>
+        <div><b id="cd-m">0</b><span>minutes</span></div>
+      </div>
+    </section>
+
+    <section class="part" aria-labelledby="h-order">
+      <h3 id="h-order">How the evening goes</h3>
+      <p class="sub">About three hours, unhurried.</p>
+      <ol class="order">
+        <li><strong>Welcome.</strong> Drinks, small bites and a short prayer.</li>
+        <li><strong>The reading.</strong> All ten chapters, each of us reading our portion aloud.</li>
+        <li><strong>The banquet.</strong> We eat, the way Esther hosted her own two feasts.</li>
+        <li><strong>The conversation.</strong> Questions, stories and honest answers.</li>
+        <li><strong>Sending portions.</strong> Gift exchange, then we pray for one another.</li>
+      </ol>
+    </section>
+
+    <section class="part" aria-labelledby="h-scroll">
+      <h3 id="h-scroll">Your portion to read</h3>
+      <p class="sub">Each of us reads one part of the story aloud. Read ahead if you can.</p>
+      <button class="seal" id="scrollBtn"><span class="wax">E</span><span>Break the seal</span></button>
+      <div id="scrollBox" class="hidden">
+        <div class="scroll reveal-in">
+          <div class="chap" id="sChap"></div>
+          <p id="sText"></p>
+        </div>
+        <ul class="others" id="others"></ul>
+      </div>
+    </section>
+
+    <section class="part" aria-labelledby="h-gift">
+      <h3 id="h-gift">Sending portions</h3>
+      <p class="sub">Esther 9:22 tells the people to celebrate by "sending portions of food to one another and gifts to the poor." Bring a small treat or gift for one person. Keep it a secret until the night.</p>
+      <button class="seal" id="giftBtn"><span class="wax">♥</span><span>Reveal who you're gifting</span></button>
+      <div id="giftBox" class="hidden">
+        <div class="scroll reveal-in">
+          <div class="chap" id="gName"></div>
+          <p>Something small and thoughtful. A snack she loves, a journal, a verse card, a candle. Simple is perfect.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" aria-labelledby="h-quiz">
+      <h3 id="h-quiz">How well do you know Esther?</h3>
+      <p class="sub">Six quick questions. No pressure, you'll know them all by the end of the night.</p>
+      <div id="quiz">
+        <p class="q" id="qText"></p>
+        <div class="opts" id="qOpts"></div>
+        <p class="qnote" id="qNote"></p>
+        <div class="qfoot">
+          <span class="progress" id="qProg"></span>
+          <button class="ghost hidden" id="qNext">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="rsvpSec" aria-labelledby="h-rsvp">
+      <h3 id="h-rsvp">Will you come?</h3>
+      <p class="sub">Choose an answer and send it straight to Covenant on WhatsApp.</p>
+      <div class="rsvp-choice" role="group" aria-label="Your answer">
+        <button data-r="yes" aria-pressed="false">Yes, I'll be there</button>
+        <button data-r="no" aria-pressed="false">Sadly, I can't</button>
+      </div>
+      <label class="lbl" for="note">Anything to add? A food you'd love, an allergy, a question.</label>
+      <textarea id="note" placeholder="Optional"></textarea>
+      <a class="send" id="sendBtn" href="#" target="_blank" rel="noopener" aria-disabled="true">Send my answer on WhatsApp</a>
+    </section>
+
+    <footer>
+      <p>"And who knows but that you have come to your royal position for such a time as this?"<br>Esther 4:14</p>
+      <button class="switch" id="switchBtn">Not you? Choose another name</button>
+    </footer>
+  </div>
+</main>
+
+<script>
+/* ----- Edit these when the details are set ----- */
+const EVENT = {
+  start: null,             // e.g. "2026-11-07T16:00:00+01:00"
+  whenText: "8th October, right after service",
+  whereText: "Jekeal House, 17 Federal Road",
+  hostWhatsApp: ""         // e.g. "2348012345678" (no +). Leave blank to pick the chat yourself.
+};
+
+const READING = {
+  Covenant:   { chap:"Chapters 1–2", sub:"The queen who said no, and the girl who was chosen", text:"King Xerxes throws a feast, Queen Vashti refuses his summons, and an orphan named Hadassah, raised by her cousin Mordecai, becomes Queen Esther." },
+  Temiloluwa: { chap:"Chapters 3–4", sub:"The plot, and the turning point", text:"Haman is promoted and plots to destroy the Jews. Mordecai pleads with Esther, and she gives her famous answer: \"If I perish, I perish.\" You get the line the whole evening is named after." },
+  Tracy:      { chap:"Chapters 5–7", sub:"The banquets", text:"Esther walks in uninvited and the sceptre is held out. Two banquets, a sleepless king, Mordecai honoured by the very man who hated him, and Haman finally exposed. The most dramatic stretch of the book." },
+  Debby:      { chap:"Chapters 8–10", sub:"The great reversal", text:"Esther pleads again, a new decree goes out, sorrow turns into celebration, and the feast of Purim begins. You get to close the story." }
+};
+const GIFTS = { Covenant:"Tracy", Tracy:"Temiloluwa", Temiloluwa:"Debby", Debby:"Covenant" };
+
+const QUIZ = [
+  { q:"Who was queen before Esther?", o:["Jezebel","Vashti","Zeresh","Bathsheba"], a:1, n:"Vashti refused to appear at the king's banquet and lost her crown (Esther 1)." },
+  { q:"What was Esther's Hebrew name?", o:["Hadassah","Hannah","Miriam","Naomi"], a:0, n:"Hadassah means 'myrtle' (Esther 2:7)." },
+  { q:"Who raised Esther after her parents died?", o:["Her aunt","Hegai","Mordecai, her cousin","The king's steward"], a:2, n:"Mordecai took her as his own daughter (Esther 2:7)." },
+  { q:"What did Esther ask everyone to do before she went to the king?", o:["Pray for seven days","Fast for three days","Offer a sacrifice","Write a letter"], a:1, n:"Three days of fasting, and she and her maids fasted too (Esther 4:16)." },
+  { q:"Where did Haman end up?", o:["Exiled to Egypt","Promoted again","On the gallows he built for Mordecai","In prison"], a:2, n:"The trap he set became his own (Esther 7:10)." },
+  { q:"What's unusual about the book of Esther?", o:["It has no women in it","God's name is never mentioned","It's written as a poem","It has only one chapter"], a:1, n:"Not once. Yet His hand is all over the story. Hold on to that one for the discussion." }
+];
+
+/* ----- storage (optional, guarded) ----- */
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+let guest = null;
+const $ = id => document.getElementById(id);
+
+/* ----- gate ----- */
+document.querySelectorAll(".names button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    guest = b.dataset.name;
+    document.body.dataset.guest = guest;
+    $("pick").classList.add("hidden");
+    $("sceptreName").textContent = guest;
+    $("sceptre").classList.add("show");
+    $("touchBtn").focus();
+  });
+});
+
+$("touchBtn").addEventListener("click",()=>{
+  $("gate").classList.add("opened");
+  store.set("esther-guest", guest);
+  setTimeout(openInvite, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1100);
+});
+
+function openInvite(){
+  document.body.dataset.guest = guest;
+  $("rsvpSec").classList.toggle("hidden", guest === "Covenant");
+  $("gate").style.display = "none";
+  $("invite").classList.add("show");
+  $("greet").textContent = "Dear " + guest + ",";
+  fillScroll(); resetReveals(); window.scrollTo(0,0);
+}
+
+$("switchBtn").addEventListener("click",()=>{
+  store.del("esther-guest"); guest = null;
+  delete document.body.dataset.guest;
+  $("invite").classList.remove("show");
+  $("gate").style.display = ""; $("gate").classList.remove("opened");
+  $("pick").classList.remove("hidden"); $("sceptre").classList.remove("show");
+  window.scrollTo(0,0);
+});
+
+/* ----- details & countdown ----- */
+$("dWhen").textContent = EVENT.whenText;
+$("dWhere").textContent = EVENT.whereText;
+function tick(){
+  if(!EVENT.start) return;
+  const diff = new Date(EVENT.start) - new Date();
+  if(isNaN(diff) || diff <= 0){ $("countdown").classList.add("hidden"); return; }
+  $("countdown").classList.remove("hidden");
+  $("cd-d").textContent = Math.floor(diff/864e5);
+  $("cd-h").textContent = Math.floor(diff/36e5)%24;
+  $("cd-m").textContent = Math.floor(diff/6e4)%60;
+}
+tick(); setInterval(tick, 30000);
+
+/* ----- reading portion ----- */
+function fillScroll(){
+  const r = READING[guest];
+  $("sChap").innerHTML = "";
+  $("sChap").append(r.chap);
+  const s = document.createElement("small"); s.textContent = r.sub; $("sChap").append(s);
+  $("sText").textContent = r.text;
+  const ul = $("others"); ul.innerHTML = "";
+  Object.entries(READING).filter(([n])=>n!==guest).forEach(([n,v])=>{
+    const li = document.createElement("li"); li.textContent = n + ": " + v.chap; ul.append(li);
+  });
+  $("gName").textContent = GIFTS[guest];
+}
+$("accBtn").addEventListener("click",()=>{ $("accBtn").classList.add("hidden"); $("accBox").classList.remove("hidden"); });
+$("copyBtn").addEventListener("click", async ()=>{
+  const num = "0085251446";
+  let ok = false;
+  try{ await navigator.clipboard.writeText(num); ok = true; }catch(e){}
+  if(!ok){
+    try{ const t=document.createElement("textarea"); t.value=num; document.body.append(t); t.select(); ok=document.execCommand("copy"); t.remove(); }catch(e){}
+  }
+  $("copyBtn").textContent = ok ? "Copied" : "Press and hold the number to copy";
+  setTimeout(()=>{ $("copyBtn").textContent = "Copy account number"; }, 2500);
+});
+function resetReveals(){
+  $("accBox").classList.add("hidden"); $("accBtn").classList.remove("hidden");
+  $("scrollBox").classList.add("hidden"); $("scrollBtn").classList.remove("hidden");
+  $("giftBox").classList.add("hidden"); $("giftBtn").classList.remove("hidden");
+}
+$("scrollBtn").addEventListener("click",()=>{ $("scrollBtn").classList.add("hidden"); $("scrollBox").classList.remove("hidden"); });
+$("giftBtn").addEventListener("click",()=>{ $("giftBtn").classList.add("hidden"); $("giftBox").classList.remove("hidden"); });
+
+/* ----- quiz ----- */
+let qi = 0, score = 0;
+function renderQ(){
+  const item = QUIZ[qi];
+  $("qText").textContent = item.q;
+  $("qNote").textContent = "";
+  $("qNext").classList.add("hidden");
+  $("qProg").textContent = "Question " + (qi+1) + " of " + QUIZ.length;
+  const box = $("qOpts"); box.innerHTML = "";
+  item.o.forEach((t,i)=>{
+    const b = document.createElement("button"); b.textContent = t;
+    b.addEventListener("click",()=>answer(i));
+    box.append(b);
+  });
+}
+function answer(i){
+  const item = QUIZ[qi]; const btns = [...$("qOpts").children];
+  btns.forEach(b=>b.disabled = true);
+  btns[item.a].classList.add("right");
+  if(i === item.a){ score++; $("qNote").textContent = "Yes. " + item.n; }
+  else { btns[i].classList.add("wrong"); $("qNote").textContent = "Not quite. " + item.n; }
+  $("qNext").textContent = qi < QUIZ.length-1 ? "Next question" : "See my score";
+  $("qNext").classList.remove("hidden"); $("qNext").focus();
+}
+$("qNext").addEventListener("click",()=>{
+  if(qi < QUIZ.length-1){ qi++; renderQ(); return; }
+  const msg = score === QUIZ.length ? "A true queen of the scroll." : score >= 4 ? "You know your Esther. See you at the table." : "Perfect, you'll have plenty to discover on the night.";
+  $("qText").textContent = "You got " + score + " of " + QUIZ.length + ".";
+  $("qOpts").innerHTML = ""; $("qNote").textContent = msg; $("qProg").textContent = "";
+  $("qNext").textContent = "Play again";
+  $("qNext").onclick = ()=>{ qi = 0; score = 0; $("qNext").onclick = null; renderQ(); };
+});
+renderQ();
+
+/* ----- RSVP via WhatsApp ----- */
+let rsvp = null;
+document.querySelectorAll(".rsvp-choice button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    rsvp = b.dataset.r;
+    document.querySelectorAll(".rsvp-choice button").forEach(x=>x.setAttribute("aria-pressed", x===b ? "true" : "false"));
+    updateSend();
+  });
+});
+$("note").addEventListener("input", updateSend);
+function updateSend(){
+  const a = $("sendBtn");
+  if(!rsvp){ a.setAttribute("aria-disabled","true"); a.href="#"; return; }
+  const name = guest || "Me";
+  let msg = rsvp === "yes"
+    ? "Hi Covenant! It's " + name + ". Yes, I'll be at the Esther evening 👑"
+    : "Hi Covenant! It's " + name + ". I'm so sorry, I can't make the Esther evening.";
+  const extra = $("note").value.trim();
+  if(extra) msg += "\n\n" + extra;
+  const base = EVENT.hostWhatsApp ? "https://wa.me/" + EVENT.hostWhatsApp : "https://wa.me/";
+  a.href = base + "?text=" + encodeURIComponent(msg);
+  a.setAttribute("aria-disabled","false");
+}
+
+/* ----- returning guest ----- */
+const saved = store.get("esther-guest");
+if(saved && READING[saved]){ guest = saved; openInvite(); }
+</script>
+</body>
+</html>
